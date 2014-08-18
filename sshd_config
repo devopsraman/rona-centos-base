@@ -1,0 +1,36 @@
+Port 22
+AddressFamily inet
+#ListenAddress 0.0.0.0
+Protocol 2
+
+SyslogFacility AUTH
+LogLevel DEBUG
+PermitRootLogin without-password
+RSAAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile    %h/.ssh/authorized_keys
+
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+GSSAPIAuthentication no
+UsePAM yes
+
+# Accept locale-related environment variables
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+
+AllowAgentForwarding yes
+AllowTcpForwarding yes
+X11Forwarding yes
+X11DisplayOffset 10
+X11UseLocalhost yes
+PrintMotd no
+PrintLastLog no
+TCPKeepAlive yes
+#UseLogin no
+UsePrivilegeSeparation yes
+#PermitUserEnvironment no
+
+Subsystem	sftp	/usr/libexec/openssh/sftp-server
